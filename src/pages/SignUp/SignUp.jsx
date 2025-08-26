@@ -5,7 +5,7 @@ import axios from "axios";
 import { useContext, useEffect } from "react";
 import authContext from "../../store/store";
 
-const API_URL = "https://newstylegym-back.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function SignUp() {
   const authCtx = useContext(authContext);
