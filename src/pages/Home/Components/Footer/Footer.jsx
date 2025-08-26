@@ -17,7 +17,7 @@ function Footer() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1 }}
         >
-            Copyright &copy; 2024-{newDate} / Designed by <a className='text-white text-decoration-none' href="https://www.ionutcora.com/" target="_blank" rel="noopener noreferrer">Ionut Cora</a>
+            Copyright &copy; 2024-{newDate} / Designed by <a className='text-white text-decoration-none' href="https://www.linkedin.com/in/tomasmanazza/" target="_blank" rel="noopener noreferrer">Tomás Manazza</a>
         </motion.p>
     </footer>
   )
