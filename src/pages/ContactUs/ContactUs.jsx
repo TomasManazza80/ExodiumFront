@@ -144,7 +144,7 @@ function ContactUs() {
                 />
               </svg>
             </motion.div>
-            <p className="text-lg text-gray-200 font-medium">sleagus_4@gmail.com</p>
+            <p className="text-lg text-gray-200 font-medium">Exodium@gmail.com</p>
           </motion.div>
 
           <motion.div 
@@ -174,7 +174,7 @@ function ContactUs() {
                 />
               </svg>
             </motion.div>
-            <p className="text-lg text-gray-200 font-medium">342-5406918</p>
+            <a href="https://wa.me/549342https://wa.me/5493425784049"><p className="text-lg text-gray-200 font-medium">342-5784049</p></a>
           </motion.div>
 
           <motion.div 
@@ -185,10 +185,11 @@ function ContactUs() {
               transition: { type: "spring", stiffness: 400, damping: 10 } 
             }}
           >
-            <motion.div
+           <motion.div
               whileHover={{ rotate: 10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
+              
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-7 w-7 text-purple-400 mr-4"
@@ -198,8 +199,10 @@ function ContactUs() {
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.779 1.624 4.931 4.773.07 1.173.08 1.406.08 4.14 0 2.733-.01 2.966-.08 4.14-.148 3.249-1.624 4.774-4.774 4.931-1.173.07-1.406.08-4.14.08s-2.966-.01-4.14-.08c-3.249-.149-4.774-1.624-4.931-4.774-.07-1.173-.08-1.406-.08-4.14s.01-2.966.08-4.14c.149-3.248 1.624-4.773 4.774-4.931 1.173-.07 1.406-.08 4.14-.08zm0-2.163c-3.727 0-4.184.014-5.591.077C2.4 .272.784 1.832.188 5.432.122 6.84.114 7.289.114 12s.008 5.16.074 6.568c.596 3.6 2.212 5.16 5.812 5.432 1.407.065 1.856.074 5.591.074s4.184-.009 5.591-.074c3.6-.272 5.216-1.832 5.812-5.432.066-1.408.074-1.857.074-6.568s-.008-5.16-.074-6.568c-.596-3.6-2.212-5.16-5.812-5.432-1.407-.065-1.856-.074-5.591-.074zm0 6.556c-3.33 0-6.033 2.703-6.033 6.033s2.703 6.033 6.033 6.033 6.033-2.703 6.033-6.033-2.703-6.033-6.033-6.033zm0 9.946c-2.162 0-3.913-1.751-3.913-3.913s1.751-3.913 3.913-3.913 3.913 1.751 3.913 3.913-1.751 3.913-3.913 3.913zm6.541-11.845c-.661 0-1.196.536-1.196 1.196s.536 1.196 1.196 1.196 1.196-.536 1.196-1.196-.536-1.196-1.196-1.196z" />
               </svg>
             </motion.div>
-            <p className="text-lg text-gray-200 font-medium">@new_stylegym</p>
+             <a href="https://www.instagram.com/exodium.fit"><p className="text-lg text-gray-200 font-medium">@Exodium</p>      </a>
+      
           </motion.div>
+          
         </motion.div>
 
         <motion.div

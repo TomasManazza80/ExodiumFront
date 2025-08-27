@@ -29,7 +29,7 @@ function AboutSection() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl transform hover:shadow-purple-900/30 transition-all duration-700">
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 z-10"></div>
               <motion.video 
-                className="w-full h-auto rounded-2xl"
+                className="w-[350px] h-auto rounded-2xl"
                 autoPlay
                 muted
                 loop

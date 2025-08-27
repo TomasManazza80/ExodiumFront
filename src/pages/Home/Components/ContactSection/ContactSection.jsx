@@ -33,17 +33,20 @@ function ContactSection() {
             {
               icon: <FiPhone className="contact-icon" />,
               title: "Teléfono",
-              text: "+54 9 341 123 4567",
+              text: "+54 3425784049",
+              link: "https://wa.me/549342https://wa.me/5493425784049",
             },
             {
               icon: <FiMail className="contact-icon" />,
               title: "Email",
-              text: "info@vitalcorp.com",
+              text: "Exodium@gmail.com",
+              link: "mailto:exodium@gmail.com",
             },
             {
               icon: <FiInstagram className="contact-icon" />,
               title: "Instagram",
-              text: "@vitalcorp",
+              text: "@exodium.fit",
+              link: "https://www.instagram.com/exodium.fit",
             },
           ].map((card, index) => (
             <motion.div
@@ -54,9 +57,11 @@ function ContactSection() {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               whileHover={{ scale: 1.05, rotateX: 3, rotateY: -3 }}
             >
-              {card.icon}
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
+              <a href={card.link} target="_blank" rel="noopener noreferrer">
+                {card.icon}
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
+              </a>
             </motion.div>
           ))}
         </div>

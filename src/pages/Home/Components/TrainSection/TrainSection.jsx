@@ -46,8 +46,8 @@ function TrainSection() {
 
             <div className="train-contact d-flex align-items-center">
               <h5 className='fw-semibold text-nowrap'>📞 Llámanos:</h5>
-              <a href="tel:0900800700" className='train-phone'>
-                0900 800 700
+              <a href="https://wa.me/549342https://wa.me/5493425784049" className='train-phone'>
+                342 5784049
               </a>
             </div>
           </motion.div>
