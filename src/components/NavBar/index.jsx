@@ -26,19 +26,16 @@ function Index() {
   const signOutHandler = () => {
     localStorage.removeItem("token");
     authCtx.setToken(null);
-
     const notificationEvent = new CustomEvent("showNotification", {
       detail: { message: "Sesión cerrada exitosamente", type: "success" },
     });
     window.dispatchEvent(notificationEvent);
-
     closeNavbar();
   };
 
   const isAdmin = async (email) => {
     const token = localStorage.getItem("token");
     if (!token) return false;
-
     try {
       const response = await axios.get(`${API_URL}/role/${email}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -60,7 +57,6 @@ function Index() {
       authCtx.setToken(null);
       return;
     }
-
     try {
       const decoded = jwtDecode(token);
       const isAdminRole = await isAdmin(decoded.email);
@@ -85,18 +81,18 @@ function Index() {
           scrolled ? "bg-black/70 backdrop-blur-md" : "bg-black"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-2 md:py-3">
           {/* Logo */}
           <div className="flex items-center">
             <img
               src={logo}
               alt="logo"
-              className="h-14 md:h-20 w-auto transition-all duration-300"
+              className="h-10 md:h-12 w-auto transition-all duration-300"
             />
           </div>
 
           {/* Menú Desktop */}
-          <div className="hidden lg:flex items-center space-x-2">
+          <div className="hidden lg:flex items-center space-x-1">
             {[
               { to: "/", label: "Inicio" },
               { to: "/products", label: "Pagos" },
@@ -107,7 +103,7 @@ function Index() {
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     isActive
                       ? "text-purple-400 bg-white/10"
                       : "text-white hover:bg-white/10"
@@ -121,7 +117,7 @@ function Index() {
               <NavLink
                 to="/admin"
                 className={({ isActive }) =>
-                  `px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  `px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     isActive
                       ? "text-purple-400 bg-white/10"
                       : "text-white hover:bg-white/10"
@@ -134,18 +130,18 @@ function Index() {
           </div>
 
           {/* Botones Desktop */}
-          <div className="hidden lg:flex items-center space-x-3">
+          <div className="hidden lg:flex items-center space-x-2">
             {authCtx.token ? (
               <button
                 onClick={signOutHandler}
-                className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold transition-all duration-300 hover:bg-purple-700"
+                className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold transition-all duration-300 hover:bg-purple-700"
               >
                 Cerrar Sesión
               </button>
             ) : (
               <NavLink
                 to="/login"
-                className="px-6 py-2 bg-purple-600 text-white rounded-full font-semibold transition-all duration-300 hover:bg-purple-700"
+                className="px-4 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold transition-all duration-300 hover:bg-purple-700"
               >
                 Iniciar Sesión
               </NavLink>
@@ -156,11 +152,11 @@ function Index() {
           <div className="lg:hidden z-50">
             <button
               onClick={toggleHandler}
-              className="p-3 bg-white/10 text-white rounded-full hover:bg-white/20 transition-all"
+              className="p-2 bg-white/10 text-white rounded-full hover:bg-white/20 transition-all"
             >
               <FontAwesomeIcon
                 icon={toggle ? faXmark : faBars}
-                className="text-xl"
+                className="text-lg"
               />
             </button>
           </div>
@@ -172,7 +168,7 @@ function Index() {
             toggle ? "translate-x-0" : "-translate-x-full"
           }`}
         >
-          <div className="px-6 py-24 h-full flex flex-col">
+          <div className="px-6 py-20 h-full flex flex-col">
             <div className="flex-1">
               {[
                 { to: "/", label: "Inicio" },
@@ -185,7 +181,7 @@ function Index() {
                   to={link.to}
                   onClick={closeNavbar}
                   className={({ isActive }) =>
-                    `block py-4 px-4 text-lg font-medium rounded-lg mb-2 transition-colors duration-300 ${
+                    `block py-3 px-4 text-base font-medium rounded-lg mb-2 transition-colors duration-300 ${
                       isActive
                         ? "bg-purple-600 text-white"
                         : "text-white hover:bg-gray-800"
@@ -200,7 +196,7 @@ function Index() {
                   to="/admin"
                   onClick={closeNavbar}
                   className={({ isActive }) =>
-                    `block py-4 px-4 text-lg font-medium rounded-lg mb-2 transition-colors duration-300 ${
+                    `block py-3 px-4 text-base font-medium rounded-lg mb-2 transition-colors duration-300 ${
                       isActive
                         ? "bg-purple-600 text-white"
                         : "text-white hover:bg-gray-800"
@@ -211,12 +207,11 @@ function Index() {
                 </NavLink>
               )}
             </div>
-
-            <div className="pt-6 border-t border-gray-700">
+            <div className="pt-4 border-t border-gray-700">
               {authCtx.token ? (
                 <button
                   onClick={signOutHandler}
-                  className="w-full py-3 px-4 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors duration-300"
+                  className="w-full py-2 px-4 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors duration-300"
                 >
                   Cerrar Sesión
                 </button>
@@ -224,7 +219,7 @@ function Index() {
                 <NavLink
                   to="/login"
                   onClick={closeNavbar}
-                  className="block w-full py-3 px-4 bg-purple-600 text-white font-semibold rounded-lg text-center hover:bg-purple-700 transition-colors duration-300"
+                  className="block w-full py-2 px-4 bg-purple-600 text-white font-semibold rounded-lg text-center hover:bg-purple-700 transition-colors duration-300"
                 >
                   Iniciar Sesión
                 </NavLink>
@@ -235,7 +230,7 @@ function Index() {
       </nav>
 
       {/* Contenido */}
-      <div className="pt-28">
+      <div className="pt-20">
         <Outlet />
       </div>
     </>
