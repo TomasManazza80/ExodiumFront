@@ -8,28 +8,28 @@ const team = [
     name: "JUAN PÉREZ",
     title: "ENTRENADOR DE MUSCULACIÓN",
     bio: "Especializado en hipertrofia y fuerza. Más de 10 años de experiencia ayudando a atletas a alcanzar su máximo potencial.",
-    image: 'https://i.postimg.cc/tT4QtWhR/image.png',
+    image: 'https://i.postimg.cc/VkzLrw3S/Fit-durch-Sportnahrung-RSG-Group-ESN-helfen-dir-deine-Fitnessziele-zu-erreichen.jpg',
   },
   {
     id: 2,
     name: "LAUTARO GÓMEZ",
     title: "INSTRUCTORA DE RITMOS",
     bio: "Experta en coreografías de alta energía y clases grupales. Transforma el entrenamiento en una experiencia divertida.",
-    image: "https://i.postimg.cc/XXMzhCyC/image.png",
+    image: "https://i.postimg.cc/76ZxBNxq/Personal-Trainer-Photo.jpg",
   },
   {
     id: 3,
     name: "CARLOS RAMOS",
     title: "ESPECIALISTA EN CROSS-FUNCIONAL",
     bio: "Certificado en entrenamiento funcional de alta intensidad. Diseña rutinas para mejorar resistencia y condición física general.",
-    image: "https://i.postimg.cc/RZhgRdYD/image.png",
+    image: "https://i.postimg.cc/nL0xQQqg/Fit-man-smiling-in-gym-setting-by-Beautiful-things-on-creativemarket.jpg",
   },
   {
     id: 4,
     name: "ANA LÓPEZ",
     title: "NUTRICIONISTA DEPORTIVA",
     bio: "Ayuda a nuestros clientes a optimizar su alimentación para complementar su entrenamiento y lograr resultados sostenibles.",
-    image: "https://i.postimg.cc/wTTCChPh/image.png",
+    image: "https://i.postimg.cc/dtjJKXLJ/download-11.jpg",
   },
 ];
 
@@ -159,24 +159,29 @@ const Staf = () => {
   );
 };
 
-// Componente para la tarjeta de miembro del equipo
+// Componente para la tarjeta de miembro del equipo - MODIFICADO para mejorar visibilidad
 const Card = ({ member }) => (
   <div
-    className="actividad-card bg-[#1C182A] rounded-xl overflow-hidden border border-[#3C384B] h-full shadow-lg transition-all duration-300 hover:shadow-[0_15px_40px_rgba(132,94,247,0.2)] hover:border-[#845ef7]"
+    className="actividad-card bg-[#1C182A] rounded-xl overflow-hidden border border-[#3C384B] h-full shadow-lg transition-all duration-300 hover:shadow-[0_15px_40px_rgba(132,94,247,0.2)] hover:border-[#845ef7] flex flex-col"
   >
-    <div className="h-52 sm:h-56 md:h-60 overflow-hidden">
-      <img
-        src={member.image}
-        alt={`Retrato de ${member.name}, ${member.title}`}
-        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-      />
+    <div className="h-64 sm:h-72 md:h-80 lg:h-96 overflow-hidden relative">
+      <div className="w-full h-full flex items-center justify-center">
+        <img
+          src={member.image}
+          alt={`Retrato de ${member.name}, ${member.title}`}
+          className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+          style={{ objectPosition: "center 30%" }} // Ajusta para enfocar en los rostros
+        />
+      </div>
+      {/* Superposición para mejorar contraste y legibilidad */}
+      <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-[#1C182A] to-transparent"></div>
     </div>
-    <div className="p-3 sm:p-4 flex flex-col items-center text-center">
-      <h3 className="actividad-title text-lg sm:text-xl font-bold text-[#845ef7] mb-1">
+    <div className="p-4 sm:p-5 md:p-6 flex flex-col items-center text-center flex-grow justify-center">
+      <h3 className="actividad-title text-xl sm:text-2xl font-bold text-[#845ef7] mb-2">
         {member.name}
       </h3>
-      <p className="text-[#A29EAB] font-semibold text-xs uppercase tracking-wider mb-2">{member.title}</p>
-      <p className="actividad-desc text-[#D8D4E2] leading-relaxed text-xs sm:text-sm">{member.bio}</p>
+      <p className="text-[#A29EAB] font-semibold text-sm uppercase tracking-wider mb-3">{member.title}</p>
+      <p className="actividad-desc text-[#D8D4E2] leading-relaxed text-sm sm:text-base">{member.bio}</p>
     </div>
   </div>
 );
