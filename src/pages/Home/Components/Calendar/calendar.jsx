@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { faDumbbell, faFire, faPersonRunning, faMusic } from "@fortawesome/free-solid-svg-icons";
+import { faDumbbell, faFire, faPersonRunning } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-regular-svg-icons";
+
+// Componente para manejar reproducción automática de video
+function VideoCard({ videoUrl }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Reproducción automática exitosa
+          })
+          .catch((error) => {
+            console.log("Error reproduciendo video:", error);
+          });
+      }
+    }
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={videoUrl}
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="w-full h-40 object-cover rounded-lg mt-auto relative z-10"
+    />
+  );
+}
 
 function CalendarioActividades() {
   const actividades = [
@@ -41,17 +74,6 @@ function CalendarioActividades() {
       videoUrl:
         "https://res.cloudinary.com/dkeymyqcb/video/upload/v1756316319/4812848-uhd_3840_2160_25fps_uzm1xm.mp4",
     },
-    // {
-    //   id: 4,
-    //   nombre: "RITMOS",
-    //   icono: faMusic,
-    //   emoji: "🕺🏻",
-    //   descripcion:
-    //     "Clases grupales con coreografías divertidas y ritmos variados para entrenar bailando.",
-    //   horarios: ["Martes y Jueves: 18:00"],
-    //   videoUrl:
-    //     "https://res.cloudinary.com/dkeymyqcb/video/upload/v1756316594/8956472-uhd_3840_2160_25fps_baibju.mp4",
-    // },
   ];
 
   return (
@@ -72,47 +94,39 @@ function CalendarioActividades() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {actividades.map((actividad, index) => (
             <motion.div
-  key={actividad.id}
-  className="bg-white/5 backdrop-blur-lg rounded-2xl shadow-lg p-6 text-center relative overflow-hidden group flex flex-col h-full"
-  initial={{ opacity: 0, y: 50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: index * 0.2 }}
->
-  <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              key={actividad.id}
+              className="bg-white/5 backdrop-blur-lg rounded-2xl shadow-lg p-6 text-center relative overflow-hidden group flex flex-col h-full"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-  <FontAwesomeIcon
-    icon={actividad.icono}
-    className="text-4xl text-purple-400 mb-4 relative z-10"
-  />
-  <h3 className="text-2xl font-bold mb-2 relative z-10">
-    {actividad.nombre} {actividad.emoji && actividad.emoji}
-  </h3>
-  <p className="text-lg text-gray-300 mb-4 relative z-10 flex-1">
-    {actividad.descripcion}
-  </p>
+              <FontAwesomeIcon
+                icon={actividad.icono}
+                className="text-4xl text-purple-400 mb-4 relative z-10"
+              />
+              <h3 className="text-2xl font-bold mb-2 relative z-10">
+                {actividad.nombre} {actividad.emoji && actividad.emoji}
+              </h3>
+              <p className="text-lg text-gray-300 mb-4 relative z-10 flex-1">
+                {actividad.descripcion}
+              </p>
 
-  <ul className="text-gray-400 mb-4 relative z-10 space-y-2">
-    {actividad.horarios.map((horario, i) => (
-      <li
-        key={i}
-        className="flex items-center justify-center gap-2 hover:text-purple-400 transition"
-      >
-        <FontAwesomeIcon icon={faClock} className="text-sm" />
-        <span>{horario}</span>
-      </li>
-    ))}
-  </ul>
+              <ul className="text-gray-400 mb-4 relative z-10 space-y-2">
+                {actividad.horarios.map((horario, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center justify-center gap-2 hover:text-purple-400 transition"
+                  >
+                    <FontAwesomeIcon icon={faClock} className="text-sm" />
+                    <span>{horario}</span>
+                  </li>
+                ))}
+              </ul>
 
-  <video
-    src={actividad.videoUrl}
-    autoPlay
-    muted
-    loop
-    playsInline
-    className="w-full h-40 object-cover rounded-lg mt-auto relative z-10"
-  />
-</motion.div>
-
+              <VideoCard videoUrl={actividad.videoUrl} />
+            </motion.div>
           ))}
         </div>
       </div>
