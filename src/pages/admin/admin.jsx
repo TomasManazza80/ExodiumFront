@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import Rutina from '../rutina/rutina'; // Asumiendo que este componente existe
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://newstylegym-back.onrender.com";
 
 // Componente para una tarjeta de estadística
 const StatCard = ({ title, value, unit, color, icon }) => {

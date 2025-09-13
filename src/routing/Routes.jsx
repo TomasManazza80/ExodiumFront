@@ -39,9 +39,8 @@ function MyRoutes() {
           <Route path="rutina" element={<Rutina />}></Route>
           <Route path="about" element={<About />} />
           <Route path="admin" element={
-            <AdminRoute>
-              <Admin />
-            </AdminRoute>
+          <Admin />
+           
           } />
           <Route path="contact" element={<ContactUs />} />
           <Route path="*" element={<ErrorPage />} />
