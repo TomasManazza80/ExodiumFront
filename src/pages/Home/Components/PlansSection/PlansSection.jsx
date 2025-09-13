@@ -67,7 +67,7 @@ function PlansSection() {
         setPlansData(transformedData);
         setError(null);
       } catch (err) {
-        setError('Error al cargar los precios. Por favor, intenta nuevamente.');
+        
         console.error('Error fetching prices:', err);
         
         // Datos de respaldo en caso de error

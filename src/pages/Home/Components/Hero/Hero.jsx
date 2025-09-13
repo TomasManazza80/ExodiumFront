@@ -18,6 +18,50 @@ function Hero() {
     setCurrentVideo(videoPaths[nextVideoIndex]);
   }, []);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2, // Retraso entre "EXODIUM" y "GYM"
+        delayChildren: 0.5, // Retraso inicial para que la animación no sea inmediata
+      },
+    },
+  };
+
+  // NUEVAS VARIANTES: Combinan desvanecimiento, escalado y un ligero desenfoque
+  const textLineVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50, 
+      scale: 0.95, 
+      filter: "blur(5px)" 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      filter: "blur(0px)",
+      transition: {
+        duration: 1.0, // Duración de la animación
+        ease: "easeOut", // Curva de easing más suave
+      },
+    },
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+        delay: 0.8,
+      },
+    },
+  };
+
   return (
     <header className="relative w-full h-screen flex items-center justify-center overflow-hidden text-center px-4">
       {currentVideo && (
@@ -32,87 +76,50 @@ function Hero() {
           Tu navegador no soporta la etiqueta de video.
         </video>
       )}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[-1]"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-75 z-[-1]"></div> 
       
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-5xl mx-auto px-4">
         <motion.div
-          className="relative z-10"
+          className="relative z-10 flex flex-col items-center"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0, x: -100 },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: {
-                duration: 1.2,
-                ease: [0.16, 1, 0.3, 1],
-                staggerChildren: 0.2
-              }
-            }
-          }}
+          variants={containerVariants}
         >
-          <motion.h2 
-            className="text-2xl font-medium uppercase tracking-widest text-purple-300"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6 }
-              }
-            }}
-          >
-            TRANSFORMA TU CUERPO
-          </motion.h2>
-
           <motion.h1 
-            className="text-6xl font-extrabold leading-tight mt-2"
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.8, delay: 0.2 }
-              }
-            }}
+            className="text-7xl sm:text-8xl lg:text-[10rem] xl:text-[12rem] font-black leading-none uppercase tracking-tighter"
+            style={{ overflow: 'hidden' }}
           >
-            <span className="text-white">EN</span>{' '}
-            <span className="text-purple-600">EXODIUM</span>{' '}
-            <span className="text-purple-600">GYM</span>
+            <motion.span 
+              className="block text-purple-500 drop-shadow-[0_4px_20px_rgba(150,50,255,0.8)]"
+              variants={textLineVariants}
+            >
+              EXODIUM
+            </motion.span>
+            <motion.span 
+              className="block text-white drop-shadow-[0_4px_15px_rgba(255,255,255,0.6)]"
+              variants={textLineVariants}
+            >
+              GYM
+            </motion.span>
           </motion.h1>
 
-          <motion.p
-            className="text-lg mt-5 text-gray-300"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, delay: 0.4 }
-              }
-            }}
-          >
-            En Exodium, no solo entrenas, evolucionas. Somos el mejor gimnasio de Santa Fe Capital, con entrenadores expertos, equipos de última generación y un ambiente que te impulsa a superar tus límites. ¡Tu mejor versión comienza aquí!
-          </motion.p>
-
           <motion.div
-            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { duration: 0.6, delay: 0.6 }
-              }
-            }}
+            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            variants={containerVariants}
           >
-            <button className="px-6 py-3 bg-purple-600 text-white border-none rounded-full text-base font-bold cursor-pointer transition-all duration-300 ease-in-out hover:bg-purple-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/40">
-              ¡Inscríbete hoy!
-            </button>
-            <button className="px-6 py-3 bg-transparent text-white border-2 border-white rounded-full text-base font-bold cursor-pointer transition-all duration-300 ease-in-out hover:bg-white hover:text-gray-900 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20">
-              Conoce más
-            </button>
+            <motion.button 
+              className="px-10 py-4 bg-purple-600 text-white rounded-full text-lg font-extrabold transition-all duration-300 ease-in-out hover:bg-purple-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-600/70"
+              variants={buttonVariants}
+            >
+              ¡Inscríbete Hoy!
+            </motion.button>
+            <motion.button 
+              className="px-10 py-4 bg-transparent text-white border-2 border-white rounded-full text-lg font-extrabold transition-all duration-300 ease-in-out hover:bg-white hover:text-gray-900 hover:scale-105 hover:shadow-xl hover:shadow-white/30"
+              variants={buttonVariants}
+            >
+              Explora Clases
+            </motion.button>
           </motion.div>
         </motion.div>
       </div>

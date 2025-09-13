@@ -34,6 +34,8 @@ function BarraDeNavegacion() {
                     <Nav.Link href='#about' className='text-light text-uppercase'>Nosotros</Nav.Link>
                     
                     <Nav.Link href='#plans' className='text-light text-uppercase'>Planes</Nav.Link>
+                    <Nav.Link href='#plans' className='text-light text-uppercase'>Rutina</Nav.Link>
+                    
                     <Nav.Link href='#contact' className='text-light text-uppercase'>Contacto</Nav.Link>
                 </motion.ul>
                 <motion.div

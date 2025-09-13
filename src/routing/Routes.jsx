@@ -14,7 +14,7 @@ import ProtectedRoute from "./ProtectedRoute.jsx";
 import Checkout from "../pages/Checkout/Checkout.jsx";
 import Fproduct from "../components/Fproduct/Fproduct.jsx";
 import Admin from "../pages/admin/admin.jsx";
-
+import Rutina from "../pages/rutina/rutina.jsx";
 import AdminRoute from './AdminRoute.jsx';
 
 function MyRoutes() {
@@ -36,6 +36,7 @@ function MyRoutes() {
             <Route index element={<Fproduct />} />
           </Route>
           <Route path="products" element={<Products />}></Route>
+          <Route path="rutina" element={<Rutina />}></Route>
           <Route path="about" element={<About />} />
           <Route path="admin" element={
             <AdminRoute>

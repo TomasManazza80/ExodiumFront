@@ -96,6 +96,8 @@ function Index() {
             {[
               { to: "/", label: "Inicio" },
               { to: "/products", label: "Pagos" },
+              { to: "/rutina", label: "Mi Rutina" },
+
               { to: "/about", label: "Información" },
               { to: "/contact", label: "Contacto" },
             ].map((link) => (

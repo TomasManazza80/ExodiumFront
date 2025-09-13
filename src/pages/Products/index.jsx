@@ -116,7 +116,7 @@ const Products = () => {
 
       } catch (err) {
         console.error('Error al cargar datos:', err);
-        setError('Error al cargar datos, intenta nuevamente.');
+     
       } finally {
         setLoading(false);
       }
